@@ -165,7 +165,6 @@ public class ClienteRestController {
         Cliente cliente = clienteService.findById(id);
 
         if(!archivo.isEmpty()){
-            String nombreFotoAnterior = cliente.getFoto();
             String nombreArchivo = null;
             try {
                 nombreArchivo = uploadFileService.copiar(archivo);
@@ -174,6 +173,7 @@ public class ClienteRestController {
                 response.put("mensaje","Error al subir archivo");
                 return new ResponseEntity(response,HttpStatus.INTERNAL_SERVER_ERROR);
             }
+            String nombreFotoAnterior = cliente.getFoto();
             uploadFileService.eliminar(nombreFotoAnterior);
             cliente.setFoto(nombreArchivo);
             clienteService.save(cliente);

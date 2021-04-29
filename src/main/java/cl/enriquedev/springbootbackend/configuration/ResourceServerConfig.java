@@ -31,7 +31,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
         Configuración de permisos
         Partir de lo mas especifico a lo mas genericos
          */
-        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/clientes","/api/clientes/page/**","/api/upload/img/**","/images/**").permitAll() //-> para esa ruta todos puedes entrar
+        http.authorizeRequests().antMatchers(HttpMethod.GET,"/api/clientes","/api/clientes/page/**","/api/clientes/uploads/img/**","/images/**").permitAll() //-> para esa ruta todos puedes entrar
                 //.antMatchers(HttpMethod.GET,"/api/clientes/{id}").hasAnyRole("USER","ADMIN")
                 //.antMatchers(HttpMethod.POST,"/api/clientes/upload").hasAnyRole("USER","ADMIN")
                 //.antMatchers(HttpMethod.POST,"api/clientes").hasRole("ADMIN") // los post de clientes tiene que ser admin
@@ -45,7 +45,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     @Bean
     public CorsConfigurationSource corsConfigurationSource(){
         CorsConfiguration corsConfiguration = new CorsConfiguration();
-        corsConfiguration.setAllowedOrigins(Arrays.asList("http://localhost:4200","http://example.com"));//dominios donde reside nuestra aplicación
+        corsConfiguration.setAllowedOrigins(Arrays.asList("http://localhost:4200"));//dominios donde reside nuestra aplicación
         corsConfiguration.setAllowedMethods(Arrays.asList("GET","POST","PUT","DELETE","OPTIONS")); // option es porque algunos navegadores usan ese para login
         corsConfiguration.setAllowCredentials(true);
         corsConfiguration.setAllowedHeaders(Arrays.asList("Authorization","Content-type"));

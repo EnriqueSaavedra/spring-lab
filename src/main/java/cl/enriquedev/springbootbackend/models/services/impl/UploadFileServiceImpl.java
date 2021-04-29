@@ -22,12 +22,18 @@ import java.util.UUID;
 public class UploadFileServiceImpl implements IUploadFileService {
 
     private final Logger log = LoggerFactory.getLogger(UploadFileServiceImpl.class);
-    final static String UPLOAD_PATH = "upload";
+    final static String UPLOAD_PATH = "src/main/resources/static/images";
+    final static String DEFAULT_IMAGE = "no-user.png";
 
     @Override
     public Resource cargar(String nombreFoto) throws MalformedURLException {
         Path rutaArchivo = getPath(nombreFoto);
-        return new UrlResource(rutaArchivo.toUri());
+        Resource recurso = new UrlResource(rutaArchivo.toUri());
+        if(!recurso.exists() && !recurso.isReadable()){
+            rutaArchivo = getPath(DEFAULT_IMAGE);
+            recurso = new UrlResource(rutaArchivo.toUri());
+        }
+        return recurso;
     }
 
     @Override

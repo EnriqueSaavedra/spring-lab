@@ -6,6 +6,7 @@ import cl.enriquedev.springbootbackend.models.services.IUsuarioService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -19,6 +20,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@Qualifier("UsuarioServiceImpl")
 public class UsuarioServiceImpl implements UserDetailsService, IUsuarioService {
 
     private Logger logger = LoggerFactory.getLogger(UsuarioServiceImpl.class);

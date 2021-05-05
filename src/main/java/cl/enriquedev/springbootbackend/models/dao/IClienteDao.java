@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface IClienteDao extends JpaRepository<Cliente,Long> {
+public interface    IClienteDao extends JpaRepository<Cliente,Long> {
 
     @Query("from Region")
     List<Region> findAllRegiones();

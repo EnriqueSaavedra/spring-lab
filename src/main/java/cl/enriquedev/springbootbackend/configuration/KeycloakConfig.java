@@ -14,9 +14,9 @@ import org.springframework.security.core.authority.mapping.SimpleAuthorityMapper
 import org.springframework.security.web.authentication.session.NullAuthenticatedSessionStrategy;
 import org.springframework.security.web.authentication.session.SessionAuthenticationStrategy;
 
-//@KeycloakConfiguration
-//@EnableGlobalMethodSecurity(jsr250Enabled = true)
-//@EnableWebSecurity
+@KeycloakConfiguration
+@EnableGlobalMethodSecurity(jsr250Enabled = true)
+@EnableWebSecurity
 public class KeycloakConfig extends KeycloakWebSecurityConfigurerAdapter {
 
 
